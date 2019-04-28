@@ -1,12 +1,12 @@
-# adam
-adam is an adaptive learning rate optimization algorithm. it is one of the most popular optimizers for non convex optimization.
+# fun with optimizers
+this repo is a collection of popular optimizers, cleanly implemented with tensorflow.
 
-## what is this?
-a bare bones tensorflow implementation of adam, as described in the 2015 paper ["adam: a method for stochastic optimization"](https://arxiv.org/abs/1412.6980)
+optimizers are just one facet of deep neural networks. (other considerations include initializations, activation functions, batch norm, and pretraining.)
 
-## how does it *adaptively* scale learning rates?
-adam computes (1) the moving average of the gradient's first moment `m`, and (2) the moving average of the gradient's second moment (grad ^ 2, or the element-wise multiplication of the gradient) `v`.
+## adam
+adam, as described in the 2015 paper ["adam: a method for stochastic optimization"](https://arxiv.org/abs/1412.6980), is one of the most popular optimizers for non convex optimization.
 
-after adjusting for bias (since both moving averages are initialized with zeros), the fraction `m / sqrt(v)` is computed and used to rescale the learning rate.
+it computes (1) the moving average of the gradient's first moment `m`, and (2) the moving average of the gradient's second moment (grad ^ 2, or the element-wise multiplication of the gradient) `v`. after adjusting for bias (since both moving averages are initialized with zeros), the fraction `m / sqrt(v)` (informally interpreted as a signal to noise ratio) is computed and used to rescale the learning rate.
 
-as mentioned in the paper, when the gradient information is "noisy", `m` will shrink faster than `v`. as result, `m / sqrt(v)` approaches zero, which can be interpreted as a low signal-to-noise ratio.
+## momentum
+TO BE ADDED
