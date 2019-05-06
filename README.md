@@ -1,7 +1,7 @@
 # fun with optimizers
-this is a collection of popular optimizers, implemented with tensorflow.
+a collection of popular optimizers, implemented with tensorflow.
 
-optimizers are one facet of deep neural networks.  when it comes to training, other considerations include initializations, the choice of activation functions, etc..
+optimizers are just one facet of deep neural networks.  when it comes to training, other considerations include initializations, the choice of activation functions, etc..
 
 ## what makes an optimizer a "good" optimizer?
 a good gradient descent algorithm should handle the following:
@@ -12,11 +12,14 @@ a good gradient descent algorithm should handle the following:
 * invariance to gradient magnitudes. for deep networks without batch norm.
 
 ## implemented optimizers
-### stochastic gradient descent
+### stochastic gradient descent (sgd)
 ### adam
 adam, as described in the 2015 paper ["adam: a method for stochastic optimization"](https://arxiv.org/abs/1412.6980), is one of the most popular optimizers for non convex optimization.
 
 it computes (1) the moving average of the gradient's first moment `m`, and (2) the moving average of the gradient's second moment (grad ^ 2, or the element-wise multiplication of the gradient) `v`. after adjusting for bias (since both moving averages are initialized with zeros), the fraction `m / sqrt(v)` (informally interpreted as a signal to noise ratio) is computed and used to rescale the learning rate.
 
 ### momentum
+ideally, parameter updates are guided by second order derivatives. however, since second order optimization is often infeasible (usually the order of o(n^2), where `n` is number of parameters), we approximate second order behavior by examining preceding gradients.
+
+this is the idea behind momentum: accumulate previous gradients to calculate the parameter update. momentum is often combined with sgd.
 ### rmsprop
